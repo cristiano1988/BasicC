@@ -12,7 +12,8 @@
 
 #define MAX_SIZE 101
 
-// clear stdin and input string ending with newline character
+/* clear stdin and input string ending with --------------*/
+/* newline character--------------------------------------*/
 char *inputStr(char *str)
 {
     printf("\nUnesite string\n");
@@ -22,7 +23,7 @@ char *inputStr(char *str)
     return str;
 }
 
-// clear stdin and input character
+/* clear stdin and input character -----------------------*/
 char *inputChar(char *ch)
 {
     printf("\nUnesite znak\n");
@@ -32,14 +33,14 @@ char *inputChar(char *ch)
     return ch;
 }
 
-// count character value in string
+/* count character value in string -----------------------*/
 int countChar(char *str, char ch)
 {   
     int count = 0;
     
     while (*str != '\0')
     {
-        if(*str == ch)
+        if (*str == ch)
         {
             count++;
         }
@@ -49,7 +50,7 @@ int countChar(char *str, char ch)
     return count;
 }
 
-// count all string characters except last one (\0)
+/* count all string characters except last one (\0) ------*/
 int strLen(char *str)
 {
     int count = 0;
@@ -63,14 +64,14 @@ int strLen(char *str)
     return count;
 }
 
-// return pointer to inverted string
+/* return pointer to inverted string ----------------------*/
 char *invStr(char *str, char *iStr)
 {
     int i = 0;
     int n = strLen(str);
     char *iStrP = iStr;
     
-    for(i=n-1; i>=0; i--)
+    for (i = n - 1; i >= 0; i--)
     {
         *iStrP = str[i];
         iStrP++;
@@ -82,14 +83,15 @@ char *invStr(char *str, char *iStr)
 
 int main()
 {
-    char *str = (char *) malloc(sizeof(char) * MAX_SIZE);
-    char *iStr = (char *) malloc(sizeof(char) * MAX_SIZE);
+    char *str = (char *) malloc(sizeof (char) * MAX_SIZE);
+    char *iStr = (char *) malloc(sizeof (char) * MAX_SIZE);
     char a;
 
     inputStr(str);
     inputChar(&a);
     printf("\nZa string \"%s\" znak '%c' se nalazi %d puta", str, a, countChar(str, a));
     printf("\nZa string \"%s\" njegov inverzan je \"%s\"\n", str, invStr(str, iStr));
+    
     free(str);
     free(iStr);
     

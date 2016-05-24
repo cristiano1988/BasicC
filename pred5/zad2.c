@@ -8,27 +8,30 @@
 
 #define MAX_SIZE 30
 
-int unosNiz(int V[], int maxSize)
+/* inputs and determines the size of an array and --------*/
+/* fills in array with data ------------------------------*/
+int inputArray(int v[], int size)
 {
     int n;
     int i;
     char term;
     
-    do{
+    do
+    {
         printf("Unesite velicinu niza od 1 do 30\n");
-        if(scanf("%d%c", &n, &term) != 2 || term != '\n')
+        if (scanf("%d%c", &n, &term) != 2 || term != '\n')
         {
             printf("Uneseni broj nije cjelobrojan\n");
             
             return 0;
         }
-    }while(n <= 0 || n > maxSize);
+    }while (n <= 0 || n > size);
     
     printf("Unesite %d cijelih brojeva\n", n);
     
-    for(i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
-        if(scanf("%d%c", &V[i], &term) != 2 || term != '\n')
+        if (scanf("%d%c", &v[i], &term) != 2 || term != '\n')
         {
             printf("Uneseni broj nije cjelobrojan\n");
             
@@ -38,44 +41,52 @@ int unosNiz(int V[], int maxSize)
 
     return n;
 }
-int sumNiz(int V[], int maxSize)
+
+/* calculates and returns the sum of all array elements ---*/
+int sumArray(int v[], int size)
 {
     int i;
     int sum = 0;
     
-    for(i = 0; i < maxSize; i++)
+    for (i = 0; i < size; i++)
     {
-        sum = sum + V[i];
+        sum = sum + v[i];
     }
     
     return sum;
 }
-void ispisNiz(int V[], int maxSize)
+
+/* prints all array elements ------------------------------*/
+void printArray(int v[], int size)
 {
     int i;
     
     printf("Uneseni niz je:\n");
-    for(i = 0; i < maxSize; i++)
+    
+    for (i = 0; i < size; i++)
     {
-        printf("%d ", V[i]);
+        printf("%d ", v[i]);
     }
+    
     printf("\n");
 }
 
 int main()
 {
-    int V[MAX_SIZE];
+    int array[MAX_SIZE];
     int n;
     
-    n = unosNiz(V, MAX_SIZE);
-    if(n == 0)
+    n = inputArray(array, MAX_SIZE);
+    
+    if (n == 0)
     {
         printf("Pokrenite program ponovo\n");
         
         return 0;
     }
-    printf("Suma niza je %d\n", sumNiz(V, n));
-    ispisNiz(V, n);
+
+    printf("Suma niza je %d\n", sumArray(array, n));
+    printArray(array, n);
     
     return 0;
 }

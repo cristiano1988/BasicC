@@ -10,7 +10,8 @@
 
 #define MAX_SIZE 101
 
-// clear stdin and input string ending with newline character
+/* clear stdin and input string ending with ---------------*/
+/* newline character --------------------------------------*/
 char *inputStr(char *str)
 {
     printf("\nUnesite string\n");
@@ -20,7 +21,7 @@ char *inputStr(char *str)
     return str;
 }
 
-// clear stdin and input character
+/* clear stdin and input character ------------------------*/
 char *inputChar(char *ch)
 {
     printf("\nUnesite znak\n");
@@ -30,7 +31,7 @@ char *inputChar(char *ch)
     return ch;
 }
 
-// count character value in string
+/* count character value in string -------------------------*/
 int countChar(char *str, char ch)
 {   
     int count = 0;
@@ -47,7 +48,7 @@ int countChar(char *str, char ch)
     return count;
 }
 
-// count all string characters except last one (\0)
+/* count all string characters except last one (\0) --------*/
 int strLen(char *str)
 {
     int count = 0;
@@ -61,14 +62,14 @@ int strLen(char *str)
     return count;
 }
 
-// return pointer to inverted string
+/* return pointer to inverted string ------------------------*/
 char *invStr(char *str, char *iStr)
 {
     int i = 0;
     int n = strLen(str);
     char *iStrP = iStr;
     
-    for(i=n-1; i>=0; i--)
+    for (i = n - 1; i >= 0; i--)
     {
         *iStrP = str[i];
         iStrP++;
@@ -78,14 +79,15 @@ char *invStr(char *str, char *iStr)
     return iStr;
 }
 
-// count ASCII upper case characters in string (values between 65 and 90)
+/* count ASCII upper case characters in string ---------------*/
+/* values are between 65 and 90 ------------------------------*/
 int countUpperChars(char *str)
 {   
     int count = 0;
     
     while (*str != '\0')
     {
-        if(*str >= 'A' && *str <= 'Z')
+        if (*str >= 'A' && *str <= 'Z')
         {
             count++;
         }
@@ -97,8 +99,8 @@ int countUpperChars(char *str)
 
 int main()
 {
-    char *str = (char *) malloc(sizeof(char) * MAX_SIZE);
-    char *iStr = (char *) malloc(sizeof(char) * MAX_SIZE);
+    char *str = (char *) malloc(sizeof (char) * MAX_SIZE);
+    char *iStr = (char *) malloc(sizeof (char) * MAX_SIZE);
     char a;
     int option;
     
@@ -118,32 +120,32 @@ int main()
         
         switch(option)
         {
-            case 1:
-                inputStr(str);
-                break;
-            case 2:
-                printf("\nDuzina stringa je %d.\n\n", strLen(str));
+        case 1:
+            inputStr(str);
             break;
-            case 3:
-                inputChar(&a);
-                printf("\nZnak '%c' u stringu \"%s\" pronadjen je %d puta.\n\n", a, str, countChar(str, a));
+        case 2:
+            printf("\nDuzina stringa je %d.\n\n", strLen(str));
             break;
-            case 4:
-                printf("\nU stringu pronadjeno je %d velikih slova.\n\n", countUpperChars(str));
+        case 3:
+            inputChar(&a);
+            printf("\nZnak '%c' u stringu \"%s\" pronadjen je %d puta.\n\n", a, str, countChar(str, a));
             break;
-            case 5:
-                printf("\nString u obrnutom redoslijedu je \"%s\".\n\n", invStr(str, iStr));
+        case 4:
+            printf("\nU stringu pronadjeno je %d velikih slova.\n\n", countUpperChars(str));
             break;
-            case 6:
-                printf("\nUneseni string je \"%s\".\n\n", str);
+        case 5:
+            printf("\nString u obrnutom redoslijedu je \"%s\".\n\n", invStr(str, iStr));
             break;
-            case 7:
-                exit(0);
-            default:
+        case 6:
+            printf("\nUneseni string je \"%s\".\n\n", str);
+            break;
+        case 7:
+            exit(0);
+        default:
             printf("\nUnesite ispravan broj jedne od ponudjenih opcija.\n\n");
-            
         }
-    }while(option != 7);
+    }while (option != 7);
+    
     free(str);
     free(iStr);
     

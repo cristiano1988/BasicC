@@ -10,7 +10,9 @@
 
 #define MAX_SIZE 30
 
-int inputArray(int V[], int maxSize)
+/* inputs and determines the size of an array and --------*/
+/* fills in array with data ------------------------------*/
+int inputArray(int v[], int size)
 {
     int n;
     int i;
@@ -18,19 +20,19 @@ int inputArray(int V[], int maxSize)
     
     do{
         printf("Unesite velicinu niza od 1 do 30\n");
-        if(scanf("%d%c", &n, &term) != 2 || term != '\n')
+        if (scanf("%d%c", &n, &term) != 2 || term != '\n')
         {
             printf("Uneseni broj nije cjelobrojan\n");
             
             return 0;
         }
-    }while(n <= 0 || n > maxSize);
+    }while (n <= 0 || n > size);
     
     printf("Unesite %d cijelih brojeva\n", n);
     
-    for(i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
-        if(scanf("%d%c", &V[i], &term) != 2 || term != '\n')
+        if (scanf("%d%c", &v[i], &term) != 2 || term != '\n')
         {
             printf("Uneseni broj nije cjelobrojan\n");
             
@@ -41,54 +43,58 @@ int inputArray(int V[], int maxSize)
     return n;
 }
 
-int sumArray(int V[], int maxSize)
+/* calculates and returns the sum of all array elements ---*/
+int sumArray(int v[], int size)
 {
     int i;
     int sum = 0;
     
-    for(i = 0; i < maxSize; i++)
+    for (i = 0; i < size; i++)
     {
-        sum = sum + V[i];
+        sum = sum + v[i];
     }
     
     return sum;
 }
 
-void printArray(int V[], int maxSize)
+/* prints all array elements ------------------------------*/
+void printArray(int v[], int size)
 {
     int i;
     
-    for(i = 0; i < maxSize; i++)
+    for (i = 0; i < size; i++)
     {
-        printf(" %d\n", V[i]);
+        printf(" %d\n", v[i]);
     }
 }
 
-float meanValue(int V[], int maxSize)
+/* prints all array elements ------------------------------*/
+float meanValue(int v[], int size)
 {
     float aritMean;
     
-    aritMean = (float) sumArray(V, maxSize) / maxSize;
+    aritMean = (float) sumArray(v, size) / size;
     
     return aritMean;
 }
 
-int minValue(int V[], int maxSize)
+/* prints all array elements ------------------------------*/
+int minValue(int v[], int size)
 {
     int i;
     int min;
     
-    for(i = 0; i < maxSize; i++)
+    for (i = 0; i < size; i++)
     {
-        if(i == 0)
+        if (i == 0)
         {
-            min = V[0];
+            min = v[0];
         }
         else
         {
-            if(V[i] < min)
+            if (v[i] < min)
             {
-                min = V[i];
+                min = v[i];
             }
         }
     }
@@ -96,22 +102,23 @@ int minValue(int V[], int maxSize)
     return min;
 }
 
-int maxValue(int V[], int maxSize)
+/* prints all array elements ------------------------------*/
+int maxValue(int v[], int size)
 {
     int i;
     int max;
     
-    for(i = 0; i < maxSize; i++)
+    for (i = 0; i < size; i++)
     {
-        if(i == 0)
+        if (i == 0)
         {
-            max = V[0];
+            max = v[0];
         }
         else
         {
-            if(V[i] > max)
+            if (v[i] > max)
             {
-                max = V[i];
+                max = v[i];
             }
         }
     }
@@ -121,12 +128,13 @@ int maxValue(int V[], int maxSize)
 
 int main()
 {
-    int A[MAX_SIZE];
+    int array[MAX_SIZE];
     int option;
     int n = 0;
     
-    n = inputArray(A, MAX_SIZE);
-    if(n == 0)
+    n = inputArray(array, MAX_SIZE);
+    
+    if (n == 0)
     {
         printf("Pokrenite program ponovo\n");
         
@@ -145,31 +153,31 @@ int main()
         printf("\n\t>> ");
         scanf("%d", &option);
         
-        switch(option)
+        switch (option)
         {
-            case 1:
-                n = inputArray(A, MAX_SIZE);
-                if(n == 0)
-                {
-                    printf("\nPokrenite program ponovno\n\n");
-                    
-                    return 0;
-                }
-                break;
-            case 2:
-                printf("\nSuma je %d.\n\n", sumArray(A, n));
+        case 1:
+            n = inputArray(array, MAX_SIZE);
+            if (n == 0)
+            {
+                printf("\nPokrenite program ponovno\n\n");
+                
+                return 0;
+            }
             break;
-            case 3:
-                printf("\nSrednja vrijednost je: %f.\n\n", meanValue(A, n));
+        case 2:
+            printf("\nSuma je %d.\n\n", sumArray(array, n));
             break;
-            case 4:
-                printf("\nMinimalna vrijednost je: %d.\n\n", minValue(A, n));
+        case 3:
+            printf("\nSrednja vrijednost je: %f.\n\n", meanValue(array, n));
             break;
-            case 5:
-                printf("\nMaksimalna vrijednost je: %d.\n\n", maxValue(A, n));
+        case 4:
+            printf("\nMinimalna vrijednost je: %d.\n\n", minValue(array, n));
             break;
-            case 6:
-                printArray(A, n);
+        case 5:
+            printf("\nMaksimalna vrijednost je: %d.\n\n", maxValue(array, n));
+            break;
+        case 6:
+            printArray(array, n);
             break;
         }
     }while(option != 7);

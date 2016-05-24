@@ -6,28 +6,23 @@
 #include <stdio.h>
 #include <math.h>
 
-float hipotenuza(float a, float b)
+/* returns length of a right triangle hypotenuse ---------*/
+/* according to the Pythagorean Theorem ------------------*/
+double hypotenuse(float a, float b)
 {
-    float c;
-    
-    c = sqrt(a * a + b * b);
-    
-    return c;
+    return sqrt(a * a + b * b);
 }
 
 int main()
 {
     float a;
     float b;
-    float c;
     
     printf("Unesite velicine kateta trokuta\n");
     scanf("%f", &a);
     scanf("%f", &b);
     
-    c = hipotenuza(a, b);
-    
-    printf("Hipotenuza trokuta iznosi %f\n", c);
+    printf("Hipotenuza trokuta iznosi %lf\n", hypotenuse(a, b));
     
     return 0;
 }
