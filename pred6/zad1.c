@@ -9,27 +9,28 @@
 
 #define MAX_SIZE 30
 
-/* input x and y coordinates of referenced point -------------*/
+/* definition of structure that is representing point in -----*/
+/* coordinating system ---------------------------------------*/
 struct Point
 {
     float m_x;
     float m_y;
 };
 
-/* input x and y coordinates of referenced point -------------*/
+/* inputs x and y coordinates of referenced point ------------*/
 void inputPoint(struct Point *t)
 {
     scanf("\n%f", &(*t).m_x);
     scanf("\n%f", &(*t).m_y);
 }
 
-/* print x and y coordinates of input point ------------------*/
+/* prints x and y coordinates of point set on input ----------*/
 void printPoint(struct Point *t)
 {
     printf("\n(%f, %f)\n", (*t).m_x, (*t).m_y);
 }
 
-/* fill in point array with data using input pointer ---------*/
+/* inputs data in array of points using input pointer --------*/
 void inputPointArray(struct Point *t, int size)
 {
     int i;
@@ -41,16 +42,16 @@ void inputPointArray(struct Point *t, int size)
     }
 }
 
-/* euclid equation for distance calculation from input point -*/
-/* to start point of coordinate system -----------------------*/
+/* returns calculated distance from input point to start ------*/
+/* point of coordinate system using euclid equation -----------*/
 double getDistance(struct Point t)
 {
     return sqrt(t.m_x * t.m_x + t.m_y * t.m_y);
 }
 
-/* return point with x and y coordinates from array of points -*/
-/* which has higest distance according to euclid equation from */
-/* start point of coordinate system ---------------------------*/
+/* returns point with x and y coordinates from array of points */
+/* which has highest distance according to euclid equation ----*/
+/* from start point of coordinate system ----------------------*/
 struct Point maxDistancePoint(struct Point *t, int size)
 {
     int i;
